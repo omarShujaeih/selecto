@@ -16,102 +16,99 @@ export default function RestaurantDashboard() {
   return (
     <div className="min-h-screen bg-background pb-12">
       {/* Header */}
-      <div className="bg-gradient-to-b from-primary to-primary/90 text-white px-6 pt-6 pb-8 rounded-b-3xl flex items-center justify-between">
+      <div className="bg-gradient-to-br from-green-500 to-green-600 text-white px-4 sm:px-6 pt-6 pb-8 rounded-b-3xl flex items-center justify-between shadow-premium">
         <div>
-          <h1 className="text-2xl font-bold">Restaurant Dashboard</h1>
-          <p className="text-white/80 text-sm">Manage your surplus meals</p>
+          <h1 className="text-2xl sm:text-3xl font-bold">Restaurant Hub</h1>
+          <p className="text-white/80 text-xs sm:text-sm">Manage your surplus meals</p>
         </div>
         <button
           onClick={handleLogout}
-          className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+          className="p-2 hover:bg-white/20 rounded-lg transition-colors flex-shrink-0"
         >
           <LogOut size={24} />
         </button>
       </div>
 
       {/* Content */}
-      <div className="px-6 py-6 max-w-4xl mx-auto">
+      <div className="px-4 sm:px-6 py-6 max-w-4xl mx-auto">
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8">
           {/* Meals Sold */}
-          <div className="bg-primary/10 border border-primary/20 rounded-xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-2xl p-4 sm:p-6 shadow-soft">
+            <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-sm text-muted-foreground mb-1">Meals Sold</p>
-                <p className="text-4xl font-bold text-primary">{mockRestaurantStats.totalMealsSold}</p>
+                <p className="text-xs sm:text-sm text-green-700 mb-1 font-medium">Meals Sold</p>
+                <p className="text-3xl sm:text-4xl font-bold text-green-600">{mockRestaurantStats.totalMealsSold}</p>
               </div>
-              <TrendingUp className="text-primary" size={32} />
+              <TrendingUp className="text-green-600 flex-shrink-0" size={28} />
             </div>
-            <p className="text-xs text-muted-foreground">This month</p>
+            <p className="text-xs text-green-600">This month</p>
           </div>
 
           {/* Revenue Recovered */}
-          <div className="bg-blue-100 border border-blue-200 rounded-xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-2xl p-4 sm:p-6 shadow-soft">
+            <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-sm text-blue-600 mb-1">Revenue Recovered</p>
-                <p className="text-4xl font-bold text-blue-600">${mockRestaurantStats.totalRevenueRecovered}</p>
+                <p className="text-xs sm:text-sm text-blue-700 mb-1 font-medium">Revenue Recovered</p>
+                <p className="text-3xl sm:text-4xl font-bold text-blue-600">${mockRestaurantStats.totalRevenueRecovered}</p>
               </div>
-              <TrendingUp className="text-blue-600" size={32} />
+              <TrendingUp className="text-blue-600 flex-shrink-0" size={28} />
             </div>
             <p className="text-xs text-blue-600">Total recovered</p>
           </div>
 
           {/* Food Waste Prevented */}
-          <div className="bg-green-100 border border-green-200 rounded-xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border border-yellow-200 rounded-2xl p-4 sm:p-6 shadow-soft">
+            <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-sm text-green-600 mb-1">Food Waste Prevented</p>
-                <p className="text-4xl font-bold text-green-600">{mockRestaurantStats.foodWastePrevented} kg</p>
+                <p className="text-xs sm:text-sm text-yellow-700 mb-1 font-medium">Food Waste Prevented</p>
+                <p className="text-3xl sm:text-4xl font-bold text-yellow-600">{mockRestaurantStats.foodWastePrevented} kg</p>
               </div>
-              <Leaf className="text-green-600" size={32} />
+              <Leaf className="text-yellow-600 flex-shrink-0" size={28} />
             </div>
-            <p className="text-xs text-green-600">Total prevented</p>
+            <p className="text-xs text-yellow-600">Total prevented</p>
           </div>
 
           {/* Average Rating */}
-          <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-2xl p-4 sm:p-6 shadow-soft">
+            <div className="flex items-start justify-between mb-3">
               <div>
-                <p className="text-sm text-yellow-600 mb-1">Average Rating</p>
-                <p className="text-4xl font-bold text-yellow-600">{mockRestaurantStats.averageRating}</p>
+                <p className="text-xs sm:text-sm text-purple-700 mb-1 font-medium">Average Rating</p>
+                <p className="text-3xl sm:text-4xl font-bold text-purple-600">{mockRestaurantStats.averageRating}</p>
               </div>
-              <Star className="text-yellow-600 fill-yellow-600" size={32} />
+              <Star className="text-purple-600 fill-purple-600 flex-shrink-0" size={28} />
             </div>
-            <p className="text-xs text-yellow-600">Customer satisfaction</p>
+            <p className="text-xs text-purple-600">Customer satisfaction</p>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8">
           <Button
             onClick={() => setLocation('/add-meal')}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-6 text-lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 sm:py-4 rounded-2xl text-sm sm:text-base flex items-center justify-center gap-2"
             size="lg"
           >
-            <Plus size={24} className="mr-2" />
-            Add Surplus Meal
+            <Plus size={20} />
+            Add Meal
           </Button>
           <Button
             onClick={() => setLocation('/manage-meals')}
-            variant="outline"
-            className="font-bold py-6 text-lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 sm:py-4 rounded-2xl text-sm sm:text-base"
             size="lg"
           >
             Manage Meals
           </Button>
           <Button
             onClick={() => setLocation('/restaurant-orders')}
-            variant="outline"
-            className="font-bold py-6 text-lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 sm:py-4 rounded-2xl text-sm sm:text-base"
             size="lg"
           >
-            View Orders
+            Incoming Orders
           </Button>
           <Button
             onClick={() => setLocation('/monthly-report')}
-            variant="outline"
-            className="font-bold py-6 text-lg"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 sm:py-4 rounded-2xl text-sm sm:text-base"
             size="lg"
           >
             Monthly Report
@@ -119,17 +116,17 @@ export default function RestaurantDashboard() {
         </div>
 
         {/* Recent Orders */}
-        <div className="bg-card rounded-xl border border-border p-6">
-          <h2 className="text-xl font-bold text-foreground mb-4">Recent Orders</h2>
-          <div className="space-y-3">
+        <div className="bg-card rounded-2xl border border-border p-4 sm:p-6 shadow-soft">
+          <h2 className="text-lg sm:text-xl font-bold text-foreground mb-4">Recent Orders</h2>
+          <div className="space-y-2 sm:space-y-3">
             {mockOrders.slice(0, 3).map((order) => (
-              <div key={order.id} className="flex items-center justify-between p-3 bg-secondary rounded-lg">
-                <div>
-                  <p className="font-medium text-foreground">{order.items[0]?.meal.name}</p>
+              <div key={order.id} className="flex items-center justify-between p-3 sm:p-4 bg-secondary rounded-xl hover:bg-muted transition-colors">
+                <div className="min-w-0">
+                  <p className="font-medium text-foreground text-sm sm:text-base line-clamp-1">{order.items[0]?.meal.name}</p>
                   <p className="text-xs text-muted-foreground">Order #{order.id.slice(-4)}</p>
                 </div>
-                <div className="text-right">
-                  <p className="font-bold text-primary">${order.totalPrice.toFixed(2)}</p>
+                <div className="text-right ml-2 flex-shrink-0">
+                  <p className="font-bold text-primary text-sm sm:text-base">${order.totalPrice.toFixed(2)}</p>
                   <p className="text-xs text-muted-foreground capitalize">{order.status}</p>
                 </div>
               </div>

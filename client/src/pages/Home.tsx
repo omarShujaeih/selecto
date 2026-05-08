@@ -7,7 +7,7 @@ import MealCard from '@/components/MealCard';
 import BottomNav from '@/components/BottomNav';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, ShoppingCart, Leaf } from 'lucide-react';
+import { Search, ShoppingCart, Leaf, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Home() {
@@ -47,11 +47,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background pb-24">
       {/* Header */}
-      <div className="bg-gradient-to-b from-primary to-primary/90 text-white px-6 pt-6 pb-8 rounded-b-3xl">
-        <div className="flex items-center justify-between mb-6">
+      <div className="sticky top-0 z-20 bg-gradient-to-br from-green-500 to-green-600 text-white px-4 sm:px-6 pt-4 sm:pt-6 pb-6 sm:pb-8 rounded-b-3xl shadow-premium">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
           <div className="flex items-center gap-2">
             <Leaf size={28} />
-            <h1 className="text-2xl font-bold">Selecto</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold">Selecto</h1>
           </div>
           <button
             onClick={() => setLocation('/cart')}
@@ -66,40 +66,48 @@ export default function Home() {
           <Search className="absolute left-3 top-3 text-white/60" size={20} />
           <Input
             type="text"
-            placeholder="Search meals or restaurants..."
+            placeholder="Search meals..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-white/20 text-white placeholder:text-white/60 border-white/30"
+            className="pl-10 bg-white/20 text-white placeholder:text-white/60 border-white/30 rounded-full"
           />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-3 text-white/60 hover:text-white"
+            >
+              <X size={18} />
+            </button>
+          )}
         </div>
       </div>
 
       {/* Statistics Cards */}
-      <div className="px-6 mt-6 grid grid-cols-3 gap-3">
-        <div className="bg-primary/10 rounded-xl p-3 text-center">
-          <p className="text-xs text-muted-foreground mb-1">Meals Saved</p>
-          <p className="text-lg font-bold text-primary">{mockStatistics.totalMealsSaved}</p>
+      <div className="px-4 sm:px-6 mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-3 sm:p-4 text-center shadow-soft">
+          <p className="text-xs sm:text-sm text-green-700 mb-1 font-medium">Meals Saved</p>
+          <p className="text-xl sm:text-2xl font-bold text-green-600">{mockStatistics.totalMealsSaved}</p>
         </div>
-        <div className="bg-blue-100 rounded-xl p-3 text-center">
-          <p className="text-xs text-muted-foreground mb-1">This Month</p>
-          <p className="text-lg font-bold text-blue-600">{mockStatistics.thisMonth}</p>
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-3 sm:p-4 text-center shadow-soft">
+          <p className="text-xs sm:text-sm text-blue-700 mb-1 font-medium">This Month</p>
+          <p className="text-xl sm:text-2xl font-bold text-blue-600">{mockStatistics.thisMonth}</p>
         </div>
-        <div className="bg-purple-100 rounded-xl p-3 text-center">
-          <p className="text-xs text-muted-foreground mb-1">Users</p>
-          <p className="text-lg font-bold text-purple-600">{mockStatistics.totalUsers}</p>
+        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-3 sm:p-4 text-center shadow-soft">
+          <p className="text-xs sm:text-sm text-purple-700 mb-1 font-medium">Users</p>
+          <p className="text-xl sm:text-2xl font-bold text-purple-600">{mockStatistics.totalUsers}</p>
         </div>
       </div>
 
       {/* Category Filters */}
-      <div className="px-6 mt-6 mb-6">
-        <div className="flex gap-2 overflow-x-auto pb-2">
+      <div className="px-4 sm:px-6 mt-6 mb-6">
+        <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 sm:-mx-6 px-4 sm:px-6">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-full font-medium whitespace-nowrap transition-all ${
+              className={`px-4 py-2 rounded-full font-semibold whitespace-nowrap transition-all text-sm sm:text-base ${
                 selectedCategory === cat.id
-                  ? 'bg-primary text-primary-foreground'
+                  ? 'bg-primary text-primary-foreground shadow-md'
                   : 'bg-secondary text-secondary-foreground hover:bg-muted'
               }`}
             >
@@ -110,16 +118,16 @@ export default function Home() {
       </div>
 
       {/* Meals Grid */}
-      <div className="px-6 mb-6">
+      <div className="px-4 sm:px-6 mb-6">
         {filteredMeals.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {filteredMeals.map((meal) => (
               <MealCard key={meal.id} meal={meal} onReserve={handleReserve} />
             ))}
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">No meals found</p>
+            <p className="text-muted-foreground text-lg mb-2">No meals found</p>
             <p className="text-sm text-muted-foreground">Try adjusting your search or filters</p>
           </div>
         )}

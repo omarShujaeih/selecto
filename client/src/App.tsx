@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
+import { useServiceWorker } from "./hooks/useServiceWorker";
 
 // Customer Pages
 import Splash from "./pages/Splash";
@@ -70,6 +71,8 @@ function Router() {
 }
 
 function App() {
+  useServiceWorker();
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
