@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
+import { NotificationProvider } from "./contexts/NotificationContext";
 import { useServiceWorker } from "./hooks/useServiceWorker";
 
 // Customer Pages
@@ -78,10 +79,12 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <AuthProvider>
           <CartProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Router />
-            </TooltipProvider>
+            <NotificationProvider>
+              <TooltipProvider>
+                <Toaster />
+                <Router />
+              </TooltipProvider>
+            </NotificationProvider>
           </CartProvider>
         </AuthProvider>
       </ThemeProvider>

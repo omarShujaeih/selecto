@@ -1,10 +1,28 @@
+import { useState } from 'react';
 import { mockOrders } from '@/data/mockData';
 import { useLocation } from 'wouter';
+import { useNotifications } from '@/contexts/NotificationContext';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function RestaurantOrders() {
   const [, setLocation] = useLocation();
+  const { addNotification } = useNotifications();
+  const [orders, setOrders] = useState(mockOrders);
+
+  const handleStatusUpdate = (orderId: string, newStatus: string, orderItem: any) => {
+    setOrders(prev => prev.map(o => o.id === orderId ? { ...o, status: newStatus as any } : o));
+    
+    addNotification({
+      type: 'order_status',
+      title: `Order ${orderId.slice(-4)} Updated`,
+      message: `Order status changed to ${newStatus}. Customer will be notified.`,
+      orderId,
+    });
+    
+    toast.success(`Order status updated to ${newStatus}`);
+  };
 
   const statusOptions = ['pending', 'confirmed', 'ready', 'completed', 'cancelled'];
 
@@ -59,7 +77,7 @@ export default function RestaurantOrders() {
       {/* Content */}
       <div className="px-6 py-6 max-w-4xl mx-auto">
         <div className="space-y-3">
-          {mockOrders.map((order) => (
+          {orders.map((order) => (
             <div key={order.id} className="bg-card rounded-xl border border-border p-4">
               <div className="flex items-start justify-between mb-3">
                 <div>
@@ -93,7 +111,8 @@ export default function RestaurantOrders() {
               {/* Status Update Dropdown */}
               <div className="flex items-center gap-2">
                 <select
-                  defaultValue={order.status}
+                  value={order.status}
+                  onChange={(e) => handleStatusUpdate(order.id, e.target.value, order.items[0])}
                   className="flex-1 px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   {statusOptions.map((status) => (
@@ -102,9 +121,6 @@ export default function RestaurantOrders() {
                     </option>
                   ))}
                 </select>
-                <Button size="sm" className="bg-primary hover:bg-primary/90">
-                  Update
-                </Button>
               </div>
             </div>
           ))}

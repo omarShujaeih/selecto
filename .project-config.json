@@ -1,0 +1,37 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": [
+    "no_db_push"
+  ],
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663637396816/Rb8JyPWAtA5xNDy5Q5M53c",
+    "access_key_id": "ASIAZV3A2ECZKZPJS5LZ",
+    "secret_access_key": "nvMeWwC6gVfVXDyBbIlwOBvaWmt6bwsAkWppNP70",
+    "session_token": "IQoJb3JpZ2luX2VjEP7//////////wEaCXVzLWVhc3QtMSJIMEYCIQCMA66pQfwbj9GFiDquMehLh0FjLWLAqTm8k1hD5fc69gIhAPcbaPrdBGJbKAuY9vVMdasvhtqJ+c8sao9iyNUdcy7MKv8DCMf//////////wEQBBoMNjY1Mzg2MDk4ODY2IgxsTkP2ficFqcF423oq0wPtvVV5f8bjRWrCFyz0MSNB+rnbe8CwTnYyB5ZO4GvfxE2EUaFdzl3Weu5qzJL4fWPWdOT375D/kCMCPcYqtOQN5IrinJB6mhSkcZaqnKux1OkJqI0Yc5We1E3arHFLDnOOzJBBAWAyjgyrJFkOobFsUNCi5Y2+vUEE0S7SVl3T5fC1llPUsRaMkc4fHNTWfZuJR0NLiGMNHOjKsAfEg+Jjg3wZ4g6dYch4sHJYOBNK7cwgjisM/rQ20gIO9YpStWOqafgU2FENKhCZZipki54vqtSKjsYf75NAF03XsGJr/95CeoPPpnuKcDMqtNpG/K98q49l++jvfSpoZGTF2abWWkF2Gcc/CvWnW/SieeaZ42AYqjf6zPy9fik4G6yrZzYP0uxnFV4D/eYHNjeEvf3aK9Y4fzzLph1RX58SLhMgRXsPAJul/14risW8ssvbTeEguXcmIMSOe+fd3WIvuzMojpvEN65ucAA6twWW/P0FJLK+J/9BqbJP/aon+VD0nMZBpgXnUNiUDaJObGERPKeEFDYnoMMKrE2qpYd6aC2Qg2tZoqs+FnYnCo5tzK73O4JIbLMNp2aBmhQ7kJ3oinVjRrmwqUJz+p/eHtl8a6enarYttjD4i67QBjqcAd6XUCHLdLZYu1qy2IvLd04LklPsX/VjmdSQRfMMrKkF4KTJL58sctFFve5/wKJHXMN0fJKga+FmCr9ozIa5oXrvMkg6P+o509WP7uSMokdaYiLcBL6y+pe4EdhRT64hr7kbgh9OTG8eHw/OJqg0KPH/DpqRQOxvHv2/bKWekUjbnLmggocZqAZsITOXCAjcqFP7qvoROJJQx9TVZA==",
+    "expiration": "2026-05-19T09:34:48.000Z"
+  },
+  "name": "selecto",
+  "path": "/home/ubuntu/selecto",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "SDwzA7s3kemUHxBxKmBoKm",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "JdohhYtr5LaokHNxo3iVB9",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Omar Shujaeih",
+    "OWNER_OPEN_ID": "hjvKB3BeT4rDxnej9kKev4",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "411872bb-22f8-4685-92b0-7a98081bd8e8",
+    "VITE_APP_ID": "Rb8JyPWAtA5xNDy5Q5M53c",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/310519663637396816/tbOQaVLwrnWjCgtw.png",
+    "VITE_APP_TITLE": "Selecto - Food Surplus Marketplace",
+    "VITE_FRONTEND_FORGE_API_KEY": "9FRJe9oa5TtoGAKrQp9qyW",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}

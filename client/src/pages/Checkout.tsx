@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
+import { useNotifications } from '@/contexts/NotificationContext';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
@@ -8,6 +9,7 @@ import { toast } from 'sonner';
 export default function Checkout() {
   const [, setLocation] = useLocation();
   const { items, getTotalPrice, clearCart } = useCart();
+  const { addNotification } = useNotifications();
   const [deliveryOption, setDeliveryOption] = useState<'pickup' | 'delivery'>('pickup');
   const [paymentMethod, setPaymentMethod] = useState<'cash' | 'card'>('card');
 
@@ -30,6 +32,15 @@ export default function Checkout() {
   const handleConfirmOrder = () => {
     const orderId = `order-${Date.now()}`;
     toast.success('Order confirmed! Check your orders page.');
+    
+    addNotification({
+      type: 'order_status',
+      title: 'Order Confirmed',
+      message: `Your order #${orderId.slice(-8)} has been confirmed and is being prepared.`,
+      orderId,
+      actionUrl: '/orders',
+    });
+    
     clearCart();
     setLocation(`/order-confirmation/${orderId}`);
   };

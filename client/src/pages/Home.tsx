@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { mockMeals, mockStatistics, Meal } from '@/data/mockData';
 import { useLocation } from 'wouter';
 import { useCart } from '@/contexts/CartContext';
 import { useAuth } from '@/contexts/AuthContext';
+import { useNotifications } from '@/contexts/NotificationContext';
 import MealCard from '@/components/MealCard';
 import BottomNav from '@/components/BottomNav';
 import { Button } from '@/components/ui/button';
@@ -14,8 +15,24 @@ export default function Home() {
   const [, setLocation] = useLocation();
   const { addItem } = useCart();
   const { user } = useAuth();
+  const { addNotification } = useNotifications();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    const hasShownPromo = localStorage.getItem('selecto_promo_shown');
+    if (!hasShownPromo) {
+      setTimeout(() => {
+        addNotification({
+          type: 'promotion',
+          title: 'Special Offer!',
+          message: 'Get 20% off on your first order from any restaurant this week!',
+          actionUrl: '/home',
+        });
+        localStorage.setItem('selecto_promo_shown', 'true');
+      }, 2000);
+    }
+  }, [addNotification]);
 
   const categories = [
     { id: 'all', label: 'All' },
